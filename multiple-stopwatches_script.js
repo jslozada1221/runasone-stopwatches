@@ -264,7 +264,7 @@ function updateStopwatches() {
 		let mins = parseFloat(Math.floor(total_mins) % 60).toFixed(0);
 		let hours = Math.floor(total_mins/60);
 		going[i].timeButton.currTime = secs;
-		going[i].timeButton.textContent = hours.toString().padStart(2, '0') + ":" + mins.toString().padStart(2, '0') + ":" + secs.toString();
+		going[i].timeButton.textContent = hours.toString().padStart(2, '0') + ":" + mins.toString().padStart(2, '0') + ":" + secs.toString().padStart(5, '0');
 		// going[i].timeButton.textContent = secs;
 	}
 }
