@@ -173,7 +173,7 @@ function clear(sw) {
 	let tb = sw.querySelector('.time button');
 	tb.classList.remove('going');
 	tb.textContent = '0.00';
-	// tb.currTime = 0.00;
+	tb.currTime = 0.00;
 }
 
 function removeStopwatch(toRemove) {
