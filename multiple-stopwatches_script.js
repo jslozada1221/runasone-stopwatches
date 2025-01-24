@@ -172,7 +172,7 @@ function getParentStopwatch(child) {
 function clear(sw) {
 	let tb = sw.querySelector('.time button');
 	tb.classList.remove('going');
-	tb.textContent = '00:00:00.0';
+	tb.textContent = '00:00:00.00';
 	tb.currTime = 0.0;
 	tb.startTime = 0.0;
 	tb.prevTime = 0.0;
