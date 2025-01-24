@@ -1,6 +1,6 @@
 # Multiple Stopwatches
 
-Find the deployed website [here](https://eberleant.github.io/multiple-stopwatches/).
+Find the deployed website [here](https://jslozada1221.github.io/runasone-stopwatches/).
 
 ## Summary
 
