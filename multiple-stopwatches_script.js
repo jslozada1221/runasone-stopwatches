@@ -106,12 +106,14 @@ function addStopwatch() {
 						timeButton: newTimeButton,
 						prevTime: 0,
 						startTime: 0,
+						currTime: 0,
 						dropCount: 0,
 						};
 	stopwatchArray.push(newStopwatchObj);
 	allStopwatches.insertBefore(newStopwatch, finalBlock);
 	numIds++;
 	numStopwatches++;
+	newTimeButton.currTime = 0.0;
 }
 
 function disableDrag(newStopwatch) {
@@ -171,6 +173,7 @@ function clear(sw) {
 	let tb = sw.querySelector('.time button');
 	tb.classList.remove('going');
 	tb.textContent = '0.00';
+	// tb.currTime = 0.00;
 }
 
 function removeStopwatch(toRemove) {
@@ -235,16 +238,32 @@ function clickTimeButtonEvent(e) {
 	let stopwatchObj = stopwatchArray.find(sw => e.target === sw.timeButton);
 	if (stopwatchObj) {
 		stopwatchObj.startTime = new Date();
-		stopwatchObj.prevTime = stopwatchObj.timeButton.textContent;
+		stopwatchObj.prevTime = stopwatchObj.timeButton.currTime;
 	}
 }
+
+// function updateStopwatches() {
+// 	//get array of stopwatches that are currently going
+// 	let going = stopwatchArray.filter(sw => sw.timeButton && sw.timeButton.classList.contains('going'));
+// 	for (let i = 0; i < going.length; i++) { //update each stopwatch in array
+// 		let sec = (new Date() - going[i].startTime) / 1000;
+// 		going[i].timeButton.textContent = parseFloat(Math.round((+going[i].prevTime + sec) * 100) / 100).toFixed(2); //round to 2 decimal places
+// 	}
+// }
 
 function updateStopwatches() {
 	//get array of stopwatches that are currently going
 	let going = stopwatchArray.filter(sw => sw.timeButton && sw.timeButton.classList.contains('going'));
 	for (let i = 0; i < going.length; i++) { //update each stopwatch in array
 		let dur = (new Date() - going[i].startTime) / 1000;
-		going[i].timeButton.textContent = parseFloat(Math.round((+going[i].prevTime + dur) * 100) / 100).toFixed(2); //round to 2 decimal places
+		let total_secs = parseFloat(Math.round((+going[i].prevTime + dur) * 100) / 100).toFixed(2); //round to 2 decimal places
+		let secs = parseFloat(total_secs % 60).toFixed(2);
+		let total_mins = Math.floor(total_secs/60);
+		let mins = parseFloat(Math.floor(total_mins) % 60).toFixed(0);
+		let hours = Math.floor(total_mins/60);
+		going[i].timeButton.currTime = secs;
+		going[i].timeButton.textContent = hours.toString().padStart(2, '0') + ":" + mins.toString().padStart(2, '0') + ":" + secs.toString();
+		// going[i].timeButton.textContent = secs;
 	}
 }
 

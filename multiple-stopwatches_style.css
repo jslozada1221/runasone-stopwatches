@@ -1,4 +1,6 @@
 body {
+	display: flex;
+	justify-content: center;
 	background-color: white;
 	font-family: system-ui;
 }
@@ -30,6 +32,8 @@ body {
 }
 
 #sidebar {
+	position: absolute;
+	right: 100%;
 	float: right;
 	margin: 10px 30px;
 	width: 260px;
@@ -60,18 +64,35 @@ h1 {
 	display: none;
 }
 
-.stopwatch-divider {
+/*.stopwatch-divider {
 	display: inline-block;
-	width: 212px;
+	width: 1012px;
 	height: 200px;
 	padding: 10px 10px 10px 0;
 	vertical-align: top;
+
+	position: relative;
+	left: 506px;
+}*/
+
+.parent-stopwatch-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+}
+
+.stopwatch-divider {
+	width: 100%;
+	height: 200px;
+	padding: 10px 10px 10px 0;
+	background-color: transparent;
 }
 
 .stopwatch {
 	background-color: cornsilk;
-	display: inline-block;
-	width: 200px;
+	/* display: inline-block; */
+	width: 1000px;
 	height: 200px;
 	margin-left: 10px;
 	font-family: system-ui;
@@ -80,7 +101,7 @@ h1 {
 .divider {
 	display: inline-block;
 	background-color: gray;
-	height: 200px;
+	height: 2px;
 	width: 2px;
 	vertical-align: top;
 	visibility: hidden;
@@ -103,7 +124,7 @@ h1 {
 	position: absolute;
 	top: 50%;
 	left: 51%;
-	width: 190px;
+	width: 990px;
 	transform: translate(-50%, -50%);
 	font-size: 1em;
 }
@@ -147,7 +168,7 @@ h1 {
 	display: block;
 	background-color: #ffb2b2;
 	margin: 10px auto;
-	width: 200px;
+	width: 990px;
 	height: 125px;
 	border: 3px solid black;
 	color: black;
